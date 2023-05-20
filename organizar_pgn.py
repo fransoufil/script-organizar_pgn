@@ -24,6 +24,10 @@ month_names = {
     '12': 'dezembro'
 }
 
+# Contadores
+successes = 0
+failures = 0
+
 for filename in os.listdir(path_pgn):
     if filename.endswith('.pgn'):
         with open(os.path.join(path_pgn, filename)) as pgn_file:
@@ -52,5 +56,13 @@ for filename in os.listdir(path_pgn):
             new_dir = os.path.join(path_destino, year, month_folder, last_dir)
             os.makedirs(new_dir, exist_ok=True)
 
-            # Move o arquivo para o novo diretório
-            os.rename(os.path.join(path_pgn, filename), os.path.join(new_dir, filename))
+            try:
+                # Move o arquivo para o novo diretório
+                os.rename(os.path.join(path_pgn, filename), os.path.join(new_dir, filename))
+                successes += 1
+            except Exception as e:
+                print(f"Erro ao mover o arquivo {filename}: {e}")
+                failures += 1
+
+print(f"Arquivos movidos com sucesso: {successes}")
+print(f"Arquivos não movidos: {failures}")
