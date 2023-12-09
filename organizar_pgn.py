@@ -8,10 +8,10 @@ import chardet
 # pip install chardet --user
 
 # Caminho do diretório onde estão os arquivos PGN
-path_pgn = r"C:\teste - origem"
+path_pgn = r"C:\pgn_origem"
 
 # Caminho do diretório onde você quer salvar as partidas organizadas
-path_destino = r"C:\teste - destino"
+path_destino = r"C:\pgn_destino"
 
 # Mapeamento de números de mês para nomes
 month_names = {
